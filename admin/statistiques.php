@@ -15,7 +15,7 @@
 require_once '../inc/init.php';
 
 
-$resultat =executeRequete("SELECT avis.id_salle, titre, AVG(note) FROM avis INNER JOIN salle ON avis.id_salle = salle.id_salle ORDER BY note DESC LIMIT 5");
+$resultat =executeRequete("SELECT avis.id_salle, titre, note FROM avis INNER JOIN salle ON avis.id_salle = salle.id_salle ORDER BY note DESC LIMIT 5");
 $contenu .= '<h2 style="margin-top: 3rem" >Les salles les mieux notées </h2>';
 $contenu .=  '<table class="table mt-5">';
  while ($topNote = $resultat->fetch(PDO::FETCH_ASSOC)){

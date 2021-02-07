@@ -100,7 +100,7 @@ $contenu .= '</table>';
 require_once '../inc/header.php';
 
 ?>
-<h1 style="margin-top:5rem; margin-bottom:3rem">Gestion de produits</h1>
+<h1 style="margin-top:5rem; margin-bottom:3rem">Gestion des produits</h1>
 <?php
 
 echo $contenu;
