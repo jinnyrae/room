@@ -26,10 +26,10 @@ if (isset($_GET['id_avis'])) {
     $resultat = executeRequete("DELETE FROM avis WHERE id_avis=:id_avis", array(':id_avis' => $_GET['id_avis']));
 
     if ($resultat->rowCount() == 1) {
-        $contenu .= '<div class="alert alert-success">Le avis a bien été supprimée.</div>';
+        $contenu .= '<div class="alert alert-success">L\'avis a bien été supprimée.</div>';
     } else {
 
-        $contenu .= '<div class="alert alert-danger">Le avis n\'a pas pu être supprimé.</div>';
+        $contenu .= '<div class="alert alert-danger">L\'avis n\'a pas pu être supprimé.</div>';
     }
 }
 
