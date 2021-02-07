@@ -5,7 +5,6 @@ function debug($variable)
 {
     echo '<div style="border: 1px solid orange; padding: 5px;">';
     echo '<pre>';
-    print_r($variable);
     echo '</pre>';
     echo '</div>';
 }
