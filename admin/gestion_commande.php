@@ -19,20 +19,18 @@ if (!estAdmin()) {
 }
 
 # suppression commande:
-if(isset($_GET['id_commande']) && isset($_GET['action']) && $_GET['action'] == 'supprimer'){
-    $resultat = executeRequete("DELETE FROM commande WHERE id_commande = :id_commande", array(':id_commande' => $_GET['id_commande'])); 
+if (isset($_GET['id_commande']) && isset($_GET['action']) && $_GET['action'] == 'supprimer') {
+    $resultat = executeRequete("DELETE FROM commande WHERE id_commande = :id_commande", array(':id_commande' => $_GET['id_commande']));
 
-if ($resultat->rowCount() == 1) {  // si le DELETE retourne 1 ligne c'est que le produit a bien été supprimé
+    if ($resultat->rowCount() == 1) {  // si le DELETE retourne 1 ligne c'est que le produit a bien été supprimé
 
-    $contenu .= '<div class="alert alert-success">Le produit a été supprimé.</div>';
-}   
- 
+        $contenu .= '<div class="alert alert-success">Le produit a été supprimé.</div>';
+    }
 }
 
 
 # Affichage des commandes :
 $resultat = executeRequete("SELECT commande.id_commande, commande.id_membre, commande.id_produit, prix, date_enregistrement FROM commande LEFT JOIN produit ON commande.id_produit = produit.id_produit");
- debug($resultat); // objet PDOStatement
 
 $contenu .= '<table class="table table-striped">';
 
@@ -47,7 +45,6 @@ $contenu .= '<tr classe="mt-5">
                  </tr>';
 
 while ($commande = $resultat->fetch(PDO::FETCH_ASSOC)) {
-    #debug($commande);
     $contenu .= '<tr>';
 
     foreach ($commande as $indice => $information) {
@@ -59,10 +56,9 @@ while ($commande = $resultat->fetch(PDO::FETCH_ASSOC)) {
     }
 
     $contenu .= '<td>
-     <a href="?action=supprimer&id_commande='. $commande['id_commande'] .'"onclick="return confirm(\'Etes-vous certain de vouloir supprimer cette commande ?\');"> Supprimer</a>
+     <a href="?action=supprimer&id_commande=' . $commande['id_commande'] . '"onclick="return confirm(\'Etes-vous certain de vouloir supprimer cette commande ?\');"> Supprimer</a>
         </td>';
     $contenu .= '</tr>';
-   
 }
 
 $contenu .= '</table>';

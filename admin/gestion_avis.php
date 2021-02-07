@@ -38,7 +38,6 @@ if (isset($_GET['id_avis'])) {
 
 # Affichage des avis :
 $resultat = executeRequete("SELECT avis.id_avis, avis.id_membre, avis.id_salle, commentaire, note, avis.date_enregistrement FROM avis LEFT JOIN membre ON avis.id_membre = membre.id_membre LEFT JOIN salle ON avis.id_salle= salle.id_salle");
-debug($resultat); // objet PDOStatement
 
 $contenu .= '<table class="table table-striped">';
 
@@ -54,7 +53,6 @@ $contenu .= '<tr classe="mt-5">
                  </tr>';
 
 while ($avis = $resultat->fetch(PDO::FETCH_ASSOC)) {
-    #debug($avis);
     $contenu .= '<tr>';
 
     foreach ($avis as $indice => $information) {

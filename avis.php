@@ -10,7 +10,7 @@ if (!estConnecte()) {
 
 $id_membre = $_SESSION['membre']['id_membre'];
 
-if (isset($_GET['id_avis']) ) { # afficher avis actuel
+if (isset($_GET['id_avis'])) { # afficher avis actuel
     $resultat = executeRequete("SELECT * FROM avis WHERE id_avis = :id_avis", array(':id_avis' => $_GET['id_avis']));
     $avis_actuel = $resultat->fetch(PDO::FETCH_ASSOC);
 }
@@ -71,7 +71,7 @@ require_once 'inc/header.php';
         </div>
 
         <div class="form-group col-md-6">
-             
+
             <input type="hidden" name="date_enregistrement" class="form-control" id="date_enregistrement" value="<?php echo date("Y-m-d H:i:s") ?? ''; ?>">
         </div>
 

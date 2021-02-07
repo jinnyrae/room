@@ -38,7 +38,6 @@ if (isset($_GET['id_produit'])) {
 
 
 # 5- Insertion produit
-#debug($_POST);
 
 if (!empty($_POST)) {
     $resultat = executeRequete("REPLACE INTO produit VALUES (:id_produit,:id_salle, :date_arrive, :date_depart, :prix, :etat) ", array(
@@ -60,7 +59,6 @@ if (!empty($_POST)) {
 # 3- preparer l'affichage
 
 $resultat = executeRequete("SELECT produit.id_produit, date_arrive, date_depart, photo, prix, etat FROM produit left join salle ON salle.id_salle = produit.id_salle");
-#debug($resultat);
 
 $contenu .= '<table class="table mt-5 table-striped">';
 
@@ -76,7 +74,6 @@ $contenu .= '<tr>
 
 while ($produit = $resultat->fetch(PDO::FETCH_ASSOC)) {
     $contenu .= '<tr>';
-    #debug($produit);
     foreach ($produit as $indice => $information) {
 
         if ($indice == 'photo' && !empty($information)) {

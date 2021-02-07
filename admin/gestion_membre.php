@@ -21,7 +21,6 @@ if (!estAdmin()) {
     header('location:../connexion.php');
     exit;
 }
-debug($_SESSION);
 
 # suppression du membre
 
@@ -61,16 +60,14 @@ if (isset($_GET['action']) && $_GET['action'] == "modifier_statut" && isset($_GE
             } else {
                 $contenu .= '<div class="alert alert-danger">Le membre n\'a pas pu être modifié.</div>';
             }
-                } else {
-                      $contenu .= '<div class="alert alert-danger">Vous ne pouvez pas modifier votre propre profil ! </div>';
-              }
-          }
-    
+        } else {
+            $contenu .= '<div class="alert alert-danger">Vous ne pouvez pas modifier votre propre profil ! </div>';
+        }
+    }
+
 
 # Insertion membre
 if (!empty($_POST)) {
-
-    debug($_POST);
 
     if ($_GET['id_membre'] != $_SESSION['membre']['id_membre']) {
 

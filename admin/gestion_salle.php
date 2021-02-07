@@ -18,7 +18,6 @@ if (!estAdmin()) {
     header('location:../connexion.php');
     exit;
 }
-#debug($_SESSION);
 
 # 5- insertion de salles
 
@@ -29,7 +28,6 @@ if (!empty($_POST)) {
     if (isset($_POST['photo_actuelle'])) {  # modifier photo
         $photo_bdd = $_POST['photo_actuelle'];
     }
-    debug($_FILES);
 
     if (!empty($_FILES['photo']['name'])) {
         $nom_fichier = uniqid() . '_' . $_FILES['photo']['name'];
@@ -54,7 +52,7 @@ if (!empty($_POST)) {
     ));
 
     if ($resultat->rowCount() == 1) {
-    $contenu .= '<div class="alert alert-success">Le produit a été enregistré.</div>';
+        $contenu .= '<div class="alert alert-success">Le produit a été enregistré.</div>';
     }
 } # fin if(!empty($_POST)
 
@@ -89,7 +87,6 @@ if (isset($_GET['id_salle']) && isset($_GET['action']) && $_GET['action'] == 'mo
 # 4- Affichage des salles
 
 $resultat = executeRequete("SELECT * FROM salle");
-debug($resultat);
 $contenu .= '<table class="table table-striped">';
 $contenu .= '<tr>
 
